@@ -24,26 +24,6 @@ open class RxWebSocket: WebSocket {
   fileprivate var forwardDelegate: WebSocketDelegate?
   fileprivate var forwardPongDelegate: WebSocketPongDelegate?
   
-   override weak var delegate: WebSocketDelegate? {
-    didSet {
-      if delegate === self {
-        return
-      }
-      forwardDelegate = delegate
-      delegate = self
-    }
-  }
-  
-   override weak var pongDelegate: WebSocketPongDelegate? {
-    didSet {
-      if pongDelegate === self {
-        return
-      }
-      forwardPongDelegate = pongDelegate
-      pongDelegate = self
-    }
-  }
-  
   open fileprivate(set) lazy var rx_response: Observable<WebSocketEvent> = {
     return self.subject
   }()
