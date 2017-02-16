@@ -21,8 +21,6 @@ public enum WebSocketEvent {
 open class RxWebSocket: WebSocket {
   
   fileprivate let subject = PublishSubject<WebSocketEvent>()
-  fileprivate var forwardDelegate: WebSocketDelegate?
-  fileprivate var forwardPongDelegate: WebSocketPongDelegate?
   
   open fileprivate(set) lazy var rx_response: Observable<WebSocketEvent> = {
     return self.subject
